@@ -1,10 +1,17 @@
 {
-  "version": 3,
-  "framework": null,
+  "version": 2,
   "builds": [
     {
       "src": "api/**/*.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "maxLambdaSize": "15mb",
+        "includeFiles": [
+          "**/*.html",
+          "**/*.css",
+          "**/*.js"
+        ]
+      }
     },
     {
       "src": "*.html",
@@ -15,18 +22,17 @@
     {
       "src": "/api/(.*)",
       "dest": "/api/$1",
-      "methods": ["GET", "POST", "OPTIONS"]
+      "methods": ["GET", "POST", "OPTIONS"],
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization"
+      }
     },
     {
       "src": "/(.*)",
       "dest": "/index.html",
       "methods": ["GET"]
     }
-  ],
-  "functions": {
-    "api/airdrop.js": {
-      "maxDuration": 20,
-      "memory": 1024
-    }
-  }
+  ]
 }
