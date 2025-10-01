@@ -1,0 +1,19 @@
+{
+  "name": "duckcoin-airdrop",
+  "version": "1.0.0",
+  "description": "Duckcoin airdrop API for Vercel",
+  "main": "api/airdrop.js",
+  "scripts": {
+    "dev": "echo 'No dev server'",
+    "build": "echo 'No build step'",
+    "start": "vercel dev --listen 3000"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "dependencies": {
+    "@solana/spl-token": "^0.3.0",
+    "@solana/web3.js": "^1.83.0",
+    "bs58": "^5.0.0"
+  }
+}
