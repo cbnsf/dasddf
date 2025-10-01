@@ -3,15 +3,7 @@
   "builds": [
     {
       "src": "api/**/*.js",
-      "use": "@vercel/node",
-      "config": {
-        "maxLambdaSize": "15mb",
-        "includeFiles": [
-          "**/*.html",
-          "**/*.css",
-          "**/*.js"
-        ]
-      }
+      "use": "@vercel/node"
     },
     {
       "src": "*.html",
@@ -22,17 +14,11 @@
     {
       "src": "/api/(.*)",
       "dest": "/api/$1",
-      "methods": ["GET", "POST", "OPTIONS"],
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization"
-      }
+      "methods": ["GET", "POST", "OPTIONS"]
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html",
-      "methods": ["GET"]
+      "dest": "/index.html"
     }
   ]
 }
